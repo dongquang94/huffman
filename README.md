@@ -1,7 +1,10 @@
 # huffman
 Huffman coding
+- Language: C++
+  + Linked List
+  + Struct
 
-# issue in project
-Can not read the file many times.
-Decode not finish long file.
-Enter the wrong file path.
+# issues in project
+- Can not read the file many times.
+- Decode not finish with long file.
+- Enter the wrong file path.
