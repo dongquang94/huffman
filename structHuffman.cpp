@@ -61,9 +61,9 @@ void FreeNode(NodePtr p){
 
 vector<sFreq> ReadFile(string url){
 	vector<sFreq> vFreg;
-	string arrStrInput[10000]; // Mang data dau vào
-	//string strInput = "";  //Chuoi data dau vào convert tu mang arrStrInput
-	string str; // Bien luu tam de doc file
+	string arrStrInput[10000]; // Array data input
+	//string strInput = "";  //String data input convert from arrStrInput
+	string str; // temp read file
     int _count = 0, k = 1, c;
 	int temp[10000], dem[255], kitu[255];
 
@@ -298,7 +298,7 @@ int main(){
 		cout<<"\n0. Thoat.";
 		cout<<"\nLua chon cong viec: "; cin>>work;
 		switch(work){
-			case 1: // Doc file va ma hoa
+			case 1: // read file and encryption
 				{
 					if(vFrequency.size() != 0){
 						vFrequency.clear();
@@ -306,15 +306,15 @@ int main(){
 						pTree = NULL;
 					}
 					system("cls");
-					cout<<"Nhap dia chi file can ma hoa: ";
+					cout<<"Enter input file source: ";
 					string url = "";
 					cin>>url;
-					vFrequency = ReadFile(url);				// Doc file
-					vFrequency = SortFrequency(vFrequency);	// Sap xep theo tan so
+					vFrequency = ReadFile(url);				// read file
+					vFrequency = SortFrequency(vFrequency);	// sort by frequency
 					Init(&pTree);
 					pTree = BuildTree(vFrequency);
-					Encryption(pTree, "");			// Tao bang ma
-					cout<<"\nNhap duong dan luu file ma hoa:";
+					Encryption(pTree, "");			// create table code
+					cout<<"\nEnter output file source:";
 					string url3 = "";
 					cin>>url3;
 					WriteFile(url3);
@@ -322,43 +322,43 @@ int main(){
 					check = true;
 				}
 				break;
-			case 2: // Giai ma
+			case 2: // decryption
 				{
 					if(check == true){
-						cout<<"\nNhap duong dan luu file ma hoa:";
+						cout<<"\nEnter input file source:";
 						string url4 = "";
 						cin>>url4;
-						cout<<"\nNhap duong dan luu file giai ma:";
+						cout<<"\nEnter output file source:";
 						string url2 = "";
 						cin>>url2;
 						Decryption(pTree, url2, url4);
 						cout<<"Decryption successfull!";
 					}else{
-						cout<<"Khong the giai ma!";
+						cout<<"Do not decryption!";
 					}
 				}
 				break;
-			case 3: // In ra bang tan so
+			case 3: // show frequency table
 				{
 					if(check == true){
 						for(int i = 0; i < vFrequency.size(); i++){
 							cout<<vFrequency[i].Key<<" -> "<<vFrequency[i].Value<<endl;
 						}
 					}else{
-						cout<<"Khong the giai ma!";
+						cout<<"Do not decryption!";
 					}
 				}
 				break;
-			case 4: // In ra cay Huffman
+			case 4: // show Huffman struct
 				{
 					if(check == true){
 						PaintTree(pTree, 0);
 					}else{
-						cout<<"Khong the giai ma!";
+						cout<<"Do not decryption!";
 					}
 				}
 				break;
-			case 5: // In ra bang ma Huffman
+			case 5: // show Huffman table
 				{
 					if(check == true){
 						sCode _sCode;
@@ -367,14 +367,14 @@ int main(){
 							cout<<_sCode.Key<<" -> "<<_sCode.Code<<endl;
 						}
 					}else{
-						cout<<"Khong the giai ma!";
+						cout<<"Do not decryption!";
 					}
 				}
 				break;
 			case 0:
 				break;
 			default:
-				cout<<"Lua chon cong viec khong phu hop vui long nhap lai!";
+				cout<<"Please choose a job!";
 				break;
 		}
 	}while(work != 0);
