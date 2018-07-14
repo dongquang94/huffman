@@ -290,7 +290,7 @@ int main(){
 	int work;
 	do{
 		cout<<"\n\n\n***** MENU *****";
-		cout<<"\n1. Ma hoa.";
+		cout<<"\n1. Encryption.";
 		cout<<"\n2. Giai ma.";
 		cout<<"\n3. In ra bang tan so.";
 		cout<<"\n4. In ra cay Huffman.";
